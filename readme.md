@@ -37,6 +37,14 @@ cd /vagrant
 sudo python monitor.py start
 ```
 
+Para parar el monitor:
+
+```bash
+vagrant ssh
+cd /vagrant
+sudo python monitor.py stop
+```
+
 ## Configuración
 
 Requisitos del sistema:
@@ -62,10 +70,20 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+La instancia correrá en:
+
+[http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
 ## Inicar la instancia de monitoreo
 
 ```bash
 python monitor.py start
+```
+
+Para para el monitor:
+
+```bash
+python monitor.py stop
 ```
 
 ## Usando la aplicación de django
