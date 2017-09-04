@@ -26,7 +26,7 @@ Para crear el super usuario ejecutar el siguiente comando:
 ```bash
 vagrant ssh
 cd /vagrant
-python manage.py createsuperuser
+sudo python manage.py createsuperuser
 ```
 
 ### Iniciar el montitor dentro de vagrant
@@ -34,7 +34,7 @@ python manage.py createsuperuser
 ```bash
 vagrant ssh
 cd /vagrant
-python monitor.py start
+sudo python monitor.py start
 ```
 
 ## Configuración
