@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+	<div class="col-md-12">
+	    <div class="card">
+		<h4 class="card-header">Buscar en archivo CSV</h4>
+
+		<div class="card-body">
+		    <form action="/import-from-csv" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form|as_bootstrap }}
+			<input type="submit" value="Subir">
+		    </form>
+		</div>
+	    </div>
+	</div>
+    </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+	var dateFormat = "mm/dd/yy";
+	$.datepicker.regional['es'] = {
+	    closeText: 'Cerrar',
+	    prevText: '< Ant',
+	    nextText: 'Sig >',
+	    currentText: 'Hoy',
+	    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	    monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+	    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+	    dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+	    dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+	    weekHeader: 'Sm',
+	    dateFormat: 'dd/mm/yy',
+	    firstDay: 1,
+	    isRTL: false,
+	    showMonthAfterYear: false,
+	    yearSuffix: ''
+	};
+	$.datepicker.setDefaults($.datepicker.regional['es']);
+
+	var startDateTextBox = $('#id_start_date');
+	var endDateTextBox = $('#id_end_date');
+	startDateTextBox.datetimepicker({
+	    timeFormat: 'HH:mm:ss',
+	    onClose: function(dateText, inst) {
+		if (endDateTextBox.val() != '') {
+		    var testStartDate = startDateTextBox.datetimepicker('getDate');
+		    var testEndDate = endDateTextBox.datetimepicker('getDate');
+		    if (testStartDate > testEndDate)
+			endDateTextBox.datetimepicker('setDate', testStartDate);
+		}
+		else {
+		    //endDateTextBox.val(dateText);
+		}
+	    },
+	    onSelect: function (selectedDateTime){
+		endDateTextBox.datetimepicker('option', 'minDate', startDateTextBox.datetimepicker('getDate') );
+	    }
+	});
+	endDateTextBox.datetimepicker({
+	    timeFormat: 'HH:mm:ss',
+	    onClose: function(dateText, inst) {
+		if (startDateTextBox.val() != '') {
+		    var testStartDate = startDateTextBox.datetimepicker('getDate');
+		    var testEndDate = endDateTextBox.datetimepicker('getDate');
+		    if (testStartDate > testEndDate)
+			startDateTextBox.datetimepicker('setDate', testEndDate);
+		}
+		else {
+		    //startDateTextBox.val(dateText);
+		}
+	    },
+	    onSelect: function (selectedDateTime){
+		startDateTextBox.datetimepicker('option', 'maxDate', endDateTextBox.datetimepicker('getDate') );
+	    }
+	});
+    });
+</script>
+{% endblock %}

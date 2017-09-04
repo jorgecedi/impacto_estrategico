@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <h4 class="card-header">Datos del CSV</h4>
+
+                <div class="card-body">
+                    <div class="container">
+
+                        <table class="table table-striped table-bordered" id="info-table">
+                            <thead class="thead-default">
+                                <th>Timestamp</th>
+                                <th>Status</th>
+                                <th>Sitio</th>
+                            </thead>
+                            <tbody>
+                                {% for row in info %}
+                                <tr>
+                                    {% for column in row %}
+                                    <td>{{ column }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+        $("#info-table").DataTable({
+            "language":{
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            }
+        });
+    })
+</script>
+{% endblock %}
