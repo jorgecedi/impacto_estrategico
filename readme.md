@@ -29,6 +29,14 @@ cd /vagrant
 python manage.py createsuperuser
 ```
 
+### Iniciar el montitor dentro de vagrant
+
+```bash
+vagrant ssh
+cd /vagrant
+python monitor.py start
+```
+
 ## Configuración
 
 Requisitos del sistema:
