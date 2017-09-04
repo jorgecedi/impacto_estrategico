@@ -19,7 +19,7 @@ vagrant up
 
 La instancia correrá en la siguiente direccion:
 
-[http://192.168.10.10/]()
+[http://192.168.10.10/](http://192.168.10.10/)
 
 Para crear el super usuario ejecutar el siguiente comando:
 
