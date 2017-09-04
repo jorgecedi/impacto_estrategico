@@ -2,5 +2,4 @@ venv
 .vagrant
 *.pyc
 *.log
-*.csv
 *.bkp
