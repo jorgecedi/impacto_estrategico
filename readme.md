@@ -6,8 +6,8 @@ Sistema de monitoreo de sitios web, desarrollado en Python con el framwork Djang
 
 Requisitos del sistema:
 
-* Vagrant [https://www.vagrantup.com/intro/getting-started/index.html]()
-* VirutalBox [https://www.virtualbox.org/]()
+* Vagrant [https://www.vagrantup.com/intro/getting-started/index.html](https://www.vagrantup.com/intro/getting-started/index.html)
+* VirutalBox [https://www.virtualbox.org/](https://www.virtualbox.org/)
 
 Una vez instalados los requisitos ejecutar lo siguiente:
 
